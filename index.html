@@ -5,29 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 </head>
 
 <body>
+    <div id="root"></div>
     
     <script>
 
         // React.createElement(type, props, child 1, child 2,....)
         // chilren is a prop
-        const h1React = React.createElement('h1', {
-            title: 'Hello',
-            className: 'heading'
-        }, 'Hello guys !');
+        const postItem = React.createElement('div', 
+        {
+            className: 'post-item',
+        }, 
+            React.createElement('h2', { title: 'hoc lap trinh react' }, "This is a H2"),
+            React.createElement('p', null, "Hoc lap trinh tai F8")
+        );
 
+        // get root element 
+        const root = document.querySelector('#root');
 
-        const ulReact = React.createElement(
-            'ul',
-            null,
-            React.createElement('li',null,'Li 1'),
-            React.createElement('li',null,'Li 2')
+        const ulElement = React.createElement('ul', null , 
+            React.createElement('li', null, "JS"),
+            React.createElement('li', null, "HTML")
         )
 
+        ReactDOM.render(ulElement,root);
     </script>
 </body>
 </html>
