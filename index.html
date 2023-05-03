@@ -7,12 +7,13 @@
     <title>Document</title>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
 <body>
     <div id="root"></div>
     
-    <script>
+    <script type="text/babel">
 
         // React.createElement(type, props, child 1, child 2,....)
         // chilren is a prop
@@ -31,8 +32,28 @@
             React.createElement('li', null, "JS"),
             React.createElement('li', null, "HTML")
         )
+        const name = 'Dat'
+        const cousrses = [
+            {
+                name: 'HTML'
+            },
+            {
+                name: 'CSS'
+            },
+            {
+                name: 'JS'
+            },
+        ]
 
-        ReactDOM.render(ulElement,root);
+        const testBabel = (
+            <ul>
+            {
+                cousrses.map(item => <li key={item.name}> {item.name} </li>)
+            }    
+            </ul>
+        );
+
+        ReactDOM.render(testBabel,root);
     </script>
 </body>
 </html>
