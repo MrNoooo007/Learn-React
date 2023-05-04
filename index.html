@@ -7,32 +7,26 @@
     <title>Document</title>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
 <body>
     <div id="root"></div>
     
-    <script>
+    <script type="text/babel">
 
-        // React.createElement(type, props, child 1, child 2,....)
-        // chilren is a prop
-        const postItem = React.createElement('div', 
-        {
-            className: 'post-item',
-        }, 
-            React.createElement('h2', { title: 'hoc lap trinh react' }, "This is a H2"),
-            React.createElement('p', null, "Hoc lap trinh tai F8")
-        );
+        function App() {
+            return (
+                <div> 
+                    <h1>Hello guys</h1>
+                    <button onClick={() => console.log(Math.random())}> 
+                        Click Me !    
+                    </button>
+                </div>
+            )
+        }
 
-        // get root element 
-        const root = document.querySelector('#root');
-
-        const ulElement = React.createElement('ul', null , 
-            React.createElement('li', null, "JS"),
-            React.createElement('li', null, "HTML")
-        )
-
-        ReactDOM.render(ulElement,root);
+        ReactDOM.render(<App />, root);
     </script>
 </body>
 </html>
