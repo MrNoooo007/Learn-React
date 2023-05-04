@@ -15,13 +15,34 @@
     
     <script type="text/babel">
 
+        function handleClick() {
+            console.log(Math.floor(Math.random() * 10))
+        }
+
+        function Button ({ title, className, href, onClick }) {
+            let Component = 'button';
+            const props = {};
+
+            if(onClick) {
+                props.onClick = onClick;
+            }
+            if(href) {
+                Component = 'a'
+                props.href = href;
+            }
+
+            return <Component {...props}> Button </Component>
+        }
+
         function App() {
             return (
                 <div> 
-                    <h1>Hello guys</h1>
-                    <button onClick={() => console.log(Math.random())}> 
-                        Click Me !    
-                    </button>
+                    <Button 
+                        title="title"
+                        className="Hello"
+                        // href="google.com"
+                        onClick={handleClick}
+                    />
                 </div>
             )
         }
