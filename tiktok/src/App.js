@@ -1,29 +1,50 @@
 import './App.css';
-import { useState } from 'react'
+import { useState } from 'react';
+
+const courses = [
+  {
+    id: 1,
+    name: "HTML"
+  },
+  {
+    id: 2,
+    name: "CSS"
+  },
+  {
+    id: 3,
+    name: "JS"
+  }
+]
+
 
 function App() {
-  const [counter, setCounter] = useState(1);
-  const [msg, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [checked, setChecked] = useState();
 
-  const handleClick = () => {
-    setCounter(counter + 1);
-    console.log(counter);
+  function handleRadio() {
+
   }
 
   return (
     <div className="App">
-    <h1>
-      { counter }
-    </h1>
-    <button onClick={handleClick}>++</button>
 
-    <input 
-      type='text'
-      value={msg}
-      onChange={(e) => setMessage(e.target.value)}
-    />
+      {/* Two-ay binding for input  */}
+      <input 
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <h1>{ name }</h1> 
 
-    <h1> { msg } </h1>
+      {courses.map(course =>       
+        <div key={course.id}> 
+          <input 
+            type='radio' 
+            checked={course.id === checked}
+            onChange={(e) => setChecked(course.id)} 
+          /> { course.name }
+        </div>  
+      )}
+
     </div>
   );
 }
