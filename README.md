@@ -1,23 +1,8 @@
 # Learn-React
 
-## npx create-react-app ten_app
-
-## NPM 
-- Project scope
-    - npm install react react-dom
-    - npm i react reacte-dom --save-dev => DEV dependencies 
-    
-    - npm uninstall react 
-
-- Global scope
-    - 
-
-
-## NPX: Node => NPM & NPX 
+# Hooks
+- Hook is a function 
+- Only use for function component
 - 
 
-
-## YARN
-- install parallel
-- faster 
-- Yan have e mechanism to cache libs
+## UseState 
