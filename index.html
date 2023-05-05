@@ -19,19 +19,33 @@
             console.log(Math.floor(Math.random() * 10))
         }
 
-        function Button ({ title, className, href, onClick }) {
-            let Component = 'button';
-            const props = {};
+        // function Button ({ title, className, href, onClick }) {
+        //     let Component = 'button';
+        //     const props = {};
 
-            if(onClick) {
-                props.onClick = onClick;
-            }
-            if(href) {
-                Component = 'a'
-                props.href = href;
-            }
+        //     if(onClick) {
+        //         props.onClick = onClick;
+        //     }
+        //     if(href) {
+        //         Component = 'a'
+        //         props.href = href;
+        //     }
 
-            return <Component {...props}> Button </Component>
+        //     return <Component {...props}> Button </Component>
+        // }
+
+        function Input({ type, ...inputProps }) {
+            return (
+                <input 
+                    type={type}
+                    {...inputProps}
+                />
+            )
+        }
+
+        function Button({ title , children }) {
+            console.log(children);
+            return <button> Hello </button>
         }
 
         function App() {
@@ -39,9 +53,14 @@
                 <div> 
                     <Button 
                         title="title"
-                        className="Hello"
-                        // href="google.com"
-                        onClick={handleClick}
+                    >
+                    Cong Dat
+                    </Button>
+
+                    <Input 
+                        type='text'
+                        label='input ne'
+                        onFocus={() => console.log("focused !!!")}
                     />
                 </div>
             )
