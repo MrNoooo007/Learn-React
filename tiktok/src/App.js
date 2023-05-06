@@ -1,28 +1,18 @@
 import './App.css';
 import { useState } from 'react';
+import Content from './Content';
 
 
 function App() {
-  const [jobs, setJobs] = useState([]);
-  const [job, setJob] = useState('');
-
-
-  const handleAdd = () => {
-    setJobs(pre => [...pre, job])
-    setJob('');
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
   }
-
+  console.log(show);
   return (
     <div className="App">
-      <input 
-        value={job}
-        onChange={(e) => setJob(e.target.value)}
-      />
-      <button onClick={handleAdd}>Add</button>
-
-      <ul>
-        {jobs.map((job,index) => <li key={index}>{job}</li>)}
-      </ul>
+      <button onClick={handleShow}>Show / Hide</button>
+      { show && <Content/> }
     </div>
   );
 }
