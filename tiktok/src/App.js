@@ -19,10 +19,10 @@ const courses = [
 
 function App() {
   const [name, setName] = useState('');
-  const [checked, setChecked] = useState();
+  const [checked, setChecked] = useState(1);
 
   function handleRadio() {
-
+    console.log(checked);
   }
 
   return (
@@ -45,6 +45,7 @@ function App() {
         </div>  
       )}
 
+      <button onClick={handleRadio}>Sumit</button>
     </div>
   );
 }
