@@ -3,18 +3,17 @@ import { useState } from 'react';
 
 
 function Content() {
-    const [width, setWidth] = useState(window.innerWidth);
-    
+    const [countDown, setCountDown] = useState(180);
+
     useEffect(() => {
-        const handlResize = () => {
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener('resize', handlResize)
-    })
+        setInterval(() => {
+            setCountDown(countDown => countDown - 1)
+        },1000)
+    }, [])
 
     return (
         <div>
-            { width }
+            { countDown }
         </div>
     )
 }
