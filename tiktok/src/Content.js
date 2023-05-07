@@ -7,6 +7,7 @@ function Content() {
     const [title, setTitle] = useState('');
     const [posts, setPosts] = useState([]);
     const [type, setType] = useState('posts');
+    const [showGotoTop, setGotoTop] = useState(false);
     
     useEffect( () => {
         fetch(`https://jsonplaceholder.typicode.com/${type}`)
@@ -16,7 +17,17 @@ function Content() {
         })
     }, [type])
 
-    console.log(type);
+    useEffect(() => {        
+        const handlScroll = () => {
+            setGotoTop(window.scrollY >= 200);
+        }
+
+        return () => {
+            window.removeEventListener('scroll', handlScroll);
+        }
+
+        window.addEventListener('scroll', handlScroll);
+    })
 
     return (
         <div>
