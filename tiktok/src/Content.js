@@ -1,6 +1,28 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 function Content() {
+    const [title, setTitle] = useState('');
+    const [posts, setPosts] = useState([]);
+    
+    useEffect( () => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(res => res.json())
+        .then(posts => {
+            setPosts(posts);
+        })
+    })
+
     return (
-        <h1>Content !!!</h1>
+        <div>
+            <input 
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+            />
+            <ul>
+                {posts.map(post => <li key={post.id}>{post.title}</li>)}
+            </ul>
+        </div>
     )
 }
 

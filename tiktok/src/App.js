@@ -8,7 +8,6 @@ function App() {
   const handleShow = () => {
     setShow(!show);
   }
-  console.log(show);
   return (
     <div className="App">
       <button onClick={handleShow}>Show / Hide</button>
