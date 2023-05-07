@@ -3,17 +3,31 @@ import { useState } from 'react';
 
 
 function Content() {
-    const [countDown, setCountDown] = useState(180);
+    const [avt, setAvt] = useState();
 
     useEffect(() => {
-        setInterval(() => {
-            setCountDown(countDown => countDown - 1)
-        },1000)
-    }, [])
+        return () => {
+            avt && URL.revokeObjectURL(avt.preview);   
+        }    
+    }, [avt])
+
+
+    const handleUploadImg = (e) => {
+        const file = e.target.files[0];
+
+        file.preview = URL.createObjectURL(file);
+        setAvt(file);
+    }
 
     return (
         <div>
-            { countDown }
+            <input 
+                type='file'
+                onChange={handleUploadImg}
+            />
+            {avt && (
+                <img src={avt.preview} />
+            )}
         </div>
     )
 }
