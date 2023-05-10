@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { memo } from "react";
 
-
-function Content() {
+function Content({ onIncrease }) {
     return (
         <div>
-            <h1>Hello</h1>
+            { console.log('re-render') }
+            <button onClick={onIncrease}>++</button>
         </div>
     )
 }
 
-export default Content
+export default memo(Content)
