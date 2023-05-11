@@ -1,21 +1,37 @@
 import './App.css';
-import {useCallback, useState} from 'react';
-import Content from './Content';
+import {useReducer} from 'react';
+
+// init state
+const initState = 0;
+
+// Actions
+const UP_ACTION = 'up'
+const DOWN_ACTION = 'down'
+
+// Init Reducer
+const reducer = (state, action) => {
+  switch (action){
+    case UP_ACTION:
+      return state + 1;
+    case DOWN_ACTION:
+      return state - 1;  
+    default:
+      throw Error('action valid !')  
+  } 
+}
+
 
 
 function App() {
-  const [count, setCount] = useState(0);
 
-  const handleIncrease = useCallback(() => {
-      setCount(pre => pre + 1);
-  }, [])
+  const [count, dispatch] = useReducer(reducer,initState);
 
   return (
     <div className="App">
-      <h1>{ count }</h1>
-      <Content
-        onIncrease={handleIncrease}
-      />
+      <h1>{count}</h1>
+
+      <button onClick={() => {dispatch(UP_ACTION)}}>up</button>
+      <button onClick={() => {dispatch(DOWN_ACTION)}}>down</button>
     </div>
   );
 }
