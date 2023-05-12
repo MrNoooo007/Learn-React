@@ -2,36 +2,59 @@ import './App.css';
 import {useReducer} from 'react';
 
 // init state
-const initState = 0;
+const initState = {
+  job: '',
+  jobs: []
+};
 
 // Actions
-const UP_ACTION = 'up'
-const DOWN_ACTION = 'down'
+const SET_JOB = 'set_job'
+const ADD_JOB = 'add_job'
+const DELETE_JOB = 'delete_job'
+
+const setJob = (payload) => {
+  console.log(payload);
+  return {
+    type: SET_JOB,
+    payload 
+  }
+}
+
 
 // Init Reducer
 const reducer = (state, action) => {
-  switch (action){
-    case UP_ACTION:
-      return state + 1;
-    case DOWN_ACTION:
-      return state - 1;  
-    default:
-      throw Error('action valid !')  
-  } 
+  switch(action.type) {
+    case SET_JOB:
+      return {
+        ...state,
+        job: action.payload
+      }
+  }
 }
 
 
 
 function App() {
 
-  const [count, dispatch] = useReducer(reducer,initState);
+  const [state, dispatch] = useReducer(reducer,initState);
+  const { jobs, job } = state;
 
   return (
     <div className="App">
-      <h1>{count}</h1>
-
-      <button onClick={() => {dispatch(UP_ACTION)}}>up</button>
-      <button onClick={() => {dispatch(DOWN_ACTION)}}>down</button>
+      <h3>To do</h3>
+      <input
+        value={job} 
+        placeholder='enter something'
+        onChange={(e) => {
+          dispatch(setJob(e.target.value))
+        }}
+      />
+      <button>Add</button>
+      <ul>
+      {jobs.map(job => (
+        <li key={job}>{job}</li>
+      ))}
+      </ul>
     </div>
   );
 }
